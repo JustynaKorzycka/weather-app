@@ -35,7 +35,7 @@ const Chart = ({
         datasets: [
           {
             data: prepareScaleValues(weatherData) || [],
-            backgroundColor: "rgba(85, 44, 199, 0.7)",
+            backgroundColor: "#37a3b6ab",
             rLabels: [
               `${weatherData.windSpeed} m/s`,
               `${weatherData.temp} ℃`,

@@ -12,14 +12,15 @@ const blurDrawerPlugin: Plugin = {
         const scale = chart.scales.r;
         ctx.save();
 
-        ctx.fillStyle = "rgb(100, 44, 255)";
+        ctx.fillStyle = "rgba(28, 28, 27, 0.4)";
+        ctx.filter = "drop-shadow(-9px 9px 15px #000)";
         ctx.beginPath();
         // eslint-disable-next-line
         //@ts-ignore
         meta.data.forEach((point, i) => {
           // eslint-disable-next-line
           //@ts-ignore
-          const value = dataset.data[i] * 0.6;
+          const value = dataset.data[i];
           // eslint-disable-next-line
           //@ts-ignore
           const angle = scale.getPointPositionForValue(i, value);
