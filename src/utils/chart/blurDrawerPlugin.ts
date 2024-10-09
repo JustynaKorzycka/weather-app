@@ -14,7 +14,8 @@ const blurDrawerPlugin: Plugin = {
 
         ctx.fillStyle = "rgb(100, 44, 255)";
         ctx.beginPath();
-
+        // eslint-disable-next-line
+        //@ts-ignore
         meta.data.forEach((point, i) => {
           // eslint-disable-next-line
           //@ts-ignore
