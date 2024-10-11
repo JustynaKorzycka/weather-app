@@ -10,15 +10,7 @@ interface RadarContext extends Context {
   label?: string;
 }
 
-export const DEFAULT_CHART_DATA = {
-  labels: ["Wind Speed", "Temperature", "Humidity"],
-  datasets: [
-    {
-      data: [] as number[],
-      rLabels: [] as string[],
-    },
-  ],
-};
+export const LABELS = ["Wind Speed", "Temperature", "Humidity"];
 
 export const OPTIONS = {
   responsive: true,
@@ -29,7 +21,9 @@ export const OPTIONS = {
     mode: "nearest",
     intersect: false,
   },
-
+  animation: {
+    duration: 0,
+  },
   scales: {
     r: {
       angleLines: {

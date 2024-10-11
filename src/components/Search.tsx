@@ -1,24 +1,32 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useCurrentLocationContext } from "../context/currentLocationContext";
 
 import { AsyncPaginate } from "react-select-async-paginate";
 import { ISearchData } from "../types/searchData";
 import { loadOptions } from "../services/loadLocationOptions";
 
-const Search = () => {
+interface IProps {
+  onRecentSearchChange: (value: string) => void;
+}
+
+const Search = ({ onRecentSearchChange }: IProps) => {
   const [searchValue, setSearchValue] = useState<ISearchData | null>(null);
   const { updateLocation } = useCurrentLocationContext();
 
-  useEffect(() => {
-    if (searchValue) updateLocation(searchValue.value);
-  }, [searchValue]);
+  const handleOnChange = (e: ISearchData | null) => {
+    setSearchValue(e);
+    if (e) {
+      updateLocation(e.value);
+      onRecentSearchChange(e.value);
+    }
+  };
 
   return (
     <AsyncPaginate
       placeholder="Search for city"
       debounceTimeout={600}
       value={searchValue}
-      onChange={setSearchValue}
+      onChange={handleOnChange}
       loadOptions={loadOptions}
       className="w-[100%] sm:w-80"
     />
